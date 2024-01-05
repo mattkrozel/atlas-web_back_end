@@ -12,8 +12,6 @@ export class HolbertonClass {
     return this._location;
   }
 }
-
-
 export class StudentHolberton {
   constructor(firstName, lastName, holbertonClass) {
     this._firstName = firstName;
@@ -43,7 +41,5 @@ const student3 = new StudentHolberton('Albert', 'Clinton', class2019);
 const student4 = new StudentHolberton('Donald', 'Bush', class2019);
 const student5 = new StudentHolberton('Jason', 'Sandler', class2019);
 
-
 const listOfStudents = [student1, student2, student3, student4, student5];
-
 export default listOfStudents;
