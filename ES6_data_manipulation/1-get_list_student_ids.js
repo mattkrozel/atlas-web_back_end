@@ -1,4 +1,3 @@
-export default getListStudentIds;
 const getListStudentIds = (theArray) => {
   if (!Array.isArray(theArray)) {
     return[];
@@ -6,3 +5,4 @@ const getListStudentIds = (theArray) => {
   return theArray.map((studentId) => studentId.id);
 };
 
+export default getListStudentIds;
