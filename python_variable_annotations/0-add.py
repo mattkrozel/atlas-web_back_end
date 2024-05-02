@@ -6,6 +6,7 @@ b: float
 returns: sum of floats
 '''
 
+
 def add(a: float, b: float) -> float:
     '''
     add function
