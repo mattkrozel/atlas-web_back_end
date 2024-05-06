@@ -10,11 +10,11 @@ from typing import Tuple, Union
 def to_kv(k: str, v: Union[int, float]) -> Tuple[str, float]:
     '''
     type annotated function to_kv
-    
-    args: 
+
+    args:
         k str
         v union
-    
+
     returns: tuple
     '''
     return (k, v ** 2)
