@@ -4,7 +4,7 @@ Create a class LifoCache that inherits
 from BaseCaching
 '''
 
-BaseCaching = __import__('base_cachong').BaseCaching
+BaseCaching = __import__('base_caching').BaseCaching
 
 
 class LIFOCache(BaseCaching):
