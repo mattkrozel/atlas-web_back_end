@@ -33,7 +33,7 @@ class FIFOCache(BaseCaching):
         if key not in self.cache_data.keys():
             return None
         return self.cache_data[key]
-    
+
     def isFillCache(self) -> None:
         '''
         checks if cache is not full
@@ -41,4 +41,3 @@ class FIFOCache(BaseCaching):
         if len(self.cache_data.keys()) >= self.MAX_ITEMS:
             delete_item = self.cache_data.popitem()[0]
             print(f'DISCARD: {delete_item}')
-
