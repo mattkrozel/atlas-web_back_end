@@ -7,6 +7,7 @@ from BaseCaching and is a caching system
 from typing import Union
 BaseCaching = __import__('base_caching').BaseCaching
 
+
 class BasicCache(BaseCaching):
     '''
     cache class implemtn
@@ -18,7 +19,6 @@ class BasicCache(BaseCaching):
         '''
         if key and item:
             self.cache_data[key] = item
-
 
     def get(self, key: str) -> Union[None, object]:
         '''
