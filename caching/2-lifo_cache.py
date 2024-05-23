@@ -31,7 +31,7 @@ class LIFOCache(BaseCaching):
             self.cache_data[key] = item
   
 
-    def get(self, key: str) -> Union[None, object]:
+    def get(self, key):
         '''
         gets value of cache
         '''
