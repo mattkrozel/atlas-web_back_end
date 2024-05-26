@@ -22,7 +22,7 @@ class LRUCache(BaseCaching):
         assigns item to dictionary
         '''
         if key and item:
-            self.isFilleCache(key)
+            self.isFillCache(key)
             self.cache_data[key] = item
 
     def get(self, key: str) -> Union[None, object]:
