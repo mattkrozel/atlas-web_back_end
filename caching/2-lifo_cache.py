@@ -35,4 +35,4 @@ class LIFOCache(BaseCaching):
         '''
         gets value of cache
         '''
-        return self.cache_data.get[key]
+        return self.cache_data.get(key)
