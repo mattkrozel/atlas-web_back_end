@@ -35,7 +35,7 @@ class LRUCache(BaseCaching):
             self.queue.remove(key)
             self.queue.append(key)
         return self.cache_data[key]
-    
+
     def isFillCache(self, key) -> None:
         '''
         checking if the cache is full
