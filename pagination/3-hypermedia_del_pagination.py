@@ -46,4 +46,18 @@ class Server:
         returns dict with key value duos
         '''
         assert(type(index) == int and type(page_size) == int)
-
+        assert(0 <= index < len(self.dataset()))
+        dataset = self.indexed_dataset()
+        data = []
+        next_index = index
+        for _ in range(page_size):
+            while not dataset.get(next_index):
+                next_index += 1
+            data.append(dataset.get(next_index))
+            next_index += 1
+        return {
+            'index': index,
+            'next_index': next_index,
+            'page_size': page_size,
+            'data': data
+        } 
