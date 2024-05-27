@@ -45,3 +45,16 @@ def filter_datum(fields: List[str], redaction: str,
                          f'{field}={redaction}{separator}',
                          message)
     return message
+
+def get_logger() -> logging.Logger:
+    '''
+    get_logger functiinon
+    returns logging.logger
+    '''
+    logger = logging.getLogger('user_data')
+    logger.setLevel(logging.INFO)
+    logger.propagate = False
+    handler = logging.StreamHandler()
+    handler.setFormatter(RedactingFormatter(PII_FIELDS))
+    logger.addHandler(handler)
+    return logger
