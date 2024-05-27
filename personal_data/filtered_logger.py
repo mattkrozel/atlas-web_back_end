@@ -78,4 +78,27 @@ def main():
     '''
     obtain databse connection using get_db
     '''
-    
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute('SELECT * FROM users;')
+    result = cursor.fetchall()
+    for data in result:
+        message = f'name={data[0]}; ' + \
+                  f'email={data[1]}; ' + \
+                  f'phone={data[2]}; ' + \
+                  f'ssn={data[3]}; ' + \
+                  f'password={data[4]}; ' + \
+                  f'ip={data[5]}; ' + \
+                  f'last_login={data[6]}; ' + \
+                  f'user_agent={data[7]};'
+        print(message)
+        log_record = logging.LogRecord('my_logger', logging.INFO,
+                                       None, None, message, None, None)
+        formatter = RedactingFormatter(PII_FIELDS)
+        formatter.format(log_record)
+    cursor.close()
+    db.close()
+
+
+if __name__ == '__main__':
+    main()
