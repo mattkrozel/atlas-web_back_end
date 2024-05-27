@@ -10,6 +10,7 @@ from os import getenv
 
 PII_FIELDS = ('name', 'email', 'phone', 'ssn', 'password')
 
+
 class RedactingFormatter(logging.Formatter):
     """ Redacting Formatter class
         """
@@ -31,6 +32,7 @@ class RedactingFormatter(logging.Formatter):
         msg = filter_datum(self.fields, self.REDACTION,
                            super().format(record), self.SEPARATOR)
         return msg
+
 
 def filter_datum(fields: List[str], redaction: str,
                  message: str, separator: str) -> str:
