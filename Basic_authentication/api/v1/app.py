@@ -2,10 +2,10 @@
 """
 Route module for the API
 """
-from logging import exception
 from os import getenv
 from api.v1.views import app_views
 from flask import Flask, jsonify, abort, request
+from flask_cors import(CORS, cross_origin)
 import os
 
 
@@ -36,8 +36,10 @@ def unauthorized(error) -> str:
 def forbidden(error) -> str:
     '''
     user is authenicated and not allowed
-    arguments error type
-    rturns str forbidden
+    arguments:
+      error type
+    rturns:
+      str forbidden
     '''
     return jsonify({'error': 'Forbidden'}), 403
 
