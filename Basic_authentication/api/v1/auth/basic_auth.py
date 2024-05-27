@@ -5,6 +5,8 @@ module of bbasic auth
 from api.v1.auth.auth import Auth
 import re
 import base64
+from typing import TypeVar
+from models.user import User
 
 
 class BasicAuth(Auth):
@@ -53,3 +55,35 @@ class BasicAuth(Auth):
         credentials = decoded_base64_authorization_header.split(':', 1)
         return (credentials[0], credentials[1]) if ':' in\
             decoded_base64_authorization_header else (None, None)
+
+    def user_object_from_credentials(self, user_email: str,
+                                     user_pwd: str) -> TypeVar('User'):
+        '''
+        args self type
+        '''
+        if not user_email or type(user_email) != str:
+            return None
+        if not user_pwd or type(user_pwd) != str:
+            return None
+        users = User.search({'email': user_email})
+        if not users:
+            return None
+        for user in users:
+            if user.is_valid_password(user_pwd):
+                return user
+        return None
+
+    def current_user(self, request=None) -> TypeVar('User'):
+        '''
+        protected api with basic auth
+        '''
+        try:
+            header = self.authorization_header(request)
+            base64header = self.extract_base64_authorization_header(header)
+            decodebase64header = self.decode_base64_authorization_header(
+                base64header)
+            user_email, user_pwd = self.extract_user_credentials(
+                decodebase64header)
+            return self.user_object_from_credentials(user_email, user_pwd)
+        except Exception:
+            return None
