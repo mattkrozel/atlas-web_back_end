@@ -17,7 +17,7 @@ class Auth():
         returns boolean
         '''
         return False
-    
+
     def authorization_header(self, request=None) -> str:
         '''
         public method
@@ -25,7 +25,7 @@ class Auth():
         returns str request object
         '''
         return None
-    
+
     def current_user(self, request=None) -> TypeVar('User'):
         '''
         current users method
