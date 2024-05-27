@@ -72,3 +72,10 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
         database=getenv('PERSONAL_DATA_DB_NAME')
     )
     return db
+
+
+def main():
+    '''
+    obtain databse connection using get_db
+    '''
+    
