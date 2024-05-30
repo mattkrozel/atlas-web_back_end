@@ -4,7 +4,7 @@ testing client module
 '''
 import unittest
 from unittest.mock import PropertyMock, patch
-from parameterized import parameterized, paramterized_class
+from parameterized import parameterized, parameterized_class
 from client import GithubOrgClient
 from fixtures import TEST_PAYLOAD
 
