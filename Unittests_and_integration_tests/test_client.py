@@ -72,4 +72,25 @@ class TestGithubOrgClient(unittest.TestCase):
     ('org_payload', 'repos_payload', 'expected_repos', 'apache2_repos'),
     TEST_PAYLOAD
 )
+class TestIntegrationGithubOrgClient(unittest.TestCase):
+    '''
+    integration test of fixtures class
+    '''
+    @classmethod
+    def setUpClass(cls):
+        '''method called before tests
+        '''
+        config = {'return_value.json.side_effect':
+                  [
+                      cls.org_payload, cls.repos_payload,
+                      cls.org_payload, cls.repos_payload
+                  ]}
+        cls.get_patcher = patch('requests.get', **config)
+        cls.mock = cls.get_patcher.start()
 
+    @classmethod
+    def tearDownClass(cls):
+        '''
+        method called after tests in individual class runn
+        '''
+        cls.get_patcher.stop()
