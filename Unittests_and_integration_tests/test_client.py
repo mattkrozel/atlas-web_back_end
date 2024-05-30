@@ -27,9 +27,10 @@ class TestGithubOrgClient(unittest.TestCase):
 
     def test_public_repos_url(self):
         '''
-        testing result is expected based on payload
+        testing result from pulic repos is expected
+        based on payload
         '''
-        with patch('client.GithubOrgClient.org'
+        with patch('client.GithubOrgClient.org',
                    new_callable=PropertyMock) as mock:
             payload = {'repos_url': 'World'}
             mock.return_value = payload
