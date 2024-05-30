@@ -29,3 +29,13 @@ class TestAccessNestedMap(TestCase):
         [({}, ('a',), 'a'),
          ({'a': 1}, ('a', 'b'), 'b')]
     )
+    def test_get_json(self, test_url, test_payload):
+        '''
+        testing get_json to get expected return
+        '''
+        config = {'return_value.json.return_value': test_payload}
+        patcher = patch('requests.get', **config)
+        mock = patcher.start()
+        self.assertEqual(get_json(test_url), test_payload)
+        mock.assert_called_once()
+        patcher.stop()
