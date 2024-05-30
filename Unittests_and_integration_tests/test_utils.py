@@ -5,7 +5,8 @@ test utils
 '''
 from unittest import TestCase
 from parameterized import parameterized
-from utils import access_nested_map
+from utils import access_nested_map, get_json, memoize
+from unittest.mock import patch
 
 
 class TestAccessNestedMap(TestCase):
@@ -23,3 +24,8 @@ class TestAccessNestedMap(TestCase):
         testing method returns correctly
         '''
         self.assertEqual(access_nested_map(nested_map, path), expected)
+
+    @parameterized.expand(
+        [({}, ('a',), 'a'),
+         ({'a': 1}, ('a', 'b'), 'b')]
+    )
