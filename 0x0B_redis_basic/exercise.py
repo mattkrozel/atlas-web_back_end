@@ -34,3 +34,21 @@ class Cache():
         if fn:
             return fn(data)
         return data
+    
+    def get_str(self, key: str) -> str:
+        '''
+        transform redis var to python str
+        '''
+        variable = self._redis.get(key)
+        return variable.decode('utf-8')
+    
+    def get_int(self, key: str) -> int:
+        '''
+        transform redis var to python str
+        '''
+        variable = self._redis.get(key)
+        try:
+            variable = int(variable.decode('utf-8'))
+        except Exception:
+            variable = 0
+        return variable
