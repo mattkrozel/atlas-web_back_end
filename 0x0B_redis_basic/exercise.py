@@ -24,6 +24,7 @@ def count_calls(method: Callable) -> Callable:
         return method(self, *args, **kwargs)
     return wrapper
 
+
 def call_history(method: Callable) -> Callable:
     '''
     stores history of inputs outputs
@@ -40,6 +41,7 @@ def call_history(method: Callable) -> Callable:
         self._redis.rpush(outputKey, str(output))
         return output
     return wrapper
+
 
 def replay(fn: Callable):
     '''
@@ -87,7 +89,8 @@ class Cache():
         self._redis.set(key, data)
         return key
 
-    def get(self, key: str, fn: Callable = None) -> Union[str, bytes, int, float]:
+    def get(self, key: str, fn: Callable = None) ->
+        Union[str, bytes, int, float]:
         '''
         method to retrieve data and turn to python
         '''
@@ -102,7 +105,7 @@ class Cache():
         '''
         variable = self._redis.get(key)
         return variable.decode('utf-8')
-    
+
     def get_int(self, key: str) -> int:
         '''
         transform redis var to python str
