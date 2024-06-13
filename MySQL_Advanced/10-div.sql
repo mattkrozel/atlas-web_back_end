@@ -1,0 +1,8 @@
+-- script to divide first number by second
+DELIMITER //
+DROP FUNCTION IF EXISTS SafeDiv;
+CREATE FUNCTION SafeDiv(a INT, b INT) RETURNS FLOAT DETERMINISTIC BEGIN IF b = 0 THEN RETURN 0;
+END IFl;
+RETURN a / b;
+END;
+DELIMITER; //
