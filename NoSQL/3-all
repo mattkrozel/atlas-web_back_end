@@ -1,0 +1,2 @@
+// script listing all docs
+db.school.find()
