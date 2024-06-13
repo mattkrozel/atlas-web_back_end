@@ -1,0 +1,2 @@
+// script the dislays num of docs in collection
+db.school.count()
