@@ -10,5 +10,5 @@ SET average_score = (
     WHERE c.user_id = user_id
   )
 WHERE id = user_id;
-END;
+END //
 DELIMITER;
