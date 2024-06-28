@@ -38,5 +38,36 @@ describe('Integration Testing', () => {
         done();
       });
     });
-  });  
+  });
+  describe('GET /available_payments JSON string', () => {
+    it('Responds with 200 and correct json string', (done) => {
+      const options = {
+        url: 'http://localhost:7865/available_payments',
+        method: 'GET',
+      };
+      request(options, function (error, response, body) {
+        expect(response.statusCode).to.equal(200);
+        expect(body).to.equal(
+          '{"payment methods":{"credit_cards":true,"paypal":false}}'
+        );
+        done();
+      });
+    });
+  });
+  describe('POST /login with body', () => {
+    it('Responds with 200 and correct name Betty', (done) => {
+      const options = {
+        url: 'http://localhost:7865/login',
+        method: 'POST',
+        json: {
+          username: 'Betty',
+        },
+      };
+      request(options, function (error, response, body) {
+        expect(response.statusCode).to.equal(200);
+        expect(body).to.equal('Welcome Betty');
+        done();
+      });
+    });
+  });
 });
