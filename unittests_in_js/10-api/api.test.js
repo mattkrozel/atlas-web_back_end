@@ -48,7 +48,7 @@ describe('Integration Testing', () => {
       request(options, function (error, response, body) {
         expect(response.statusCode).to.equal(200);
         expect(body).to.equal(
-          '{"payment methods":{"credit_cards":true,"paypal":false}}'
+          '{"payment_methods":{"credit_cards":true,"paypal":false}}'
         );
         done();
       });
@@ -60,7 +60,7 @@ describe('Integration Testing', () => {
         url: 'http://localhost:7865/login',
         method: 'POST',
         json: {
-          username: 'Betty',
+          userName: 'Betty',
         },
       };
       request(options, function (error, response, body) {
